@@ -1,6 +1,6 @@
 import os
 import window2
-
+import PySimpleGUI as sg
 
 def open_subject_window():
     os.system("window2.py")
@@ -63,9 +63,12 @@ def calc_gpa(obtained_marks_list, gpa_list):
 
 def calc_SGPA(gpa_list, credit_hour_list, no_of_subjects, total_credit_hours):
     SGPA = 0.0
-    for i in range(no_of_subjects):
-        gpa = gpa_list[i] * credit_hour_list[i]
-        SGPA += gpa
+    try:
+        for i in range(no_of_subjects):
+            gpa = gpa_list[i] * credit_hour_list[i]
+            SGPA += gpa
+    except IndexError:
+        sg.popup("Index out of range")
 
     SGPA = SGPA / total_credit_hours
     return SGPA

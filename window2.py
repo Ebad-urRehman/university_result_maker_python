@@ -31,8 +31,12 @@ while True:
         case 'exit':
             break
         case 'next':
-            for subject in range(total_subjects):
-                subject_list.append(values[f"subject{subject}"])
+            for sub_no in range(total_subjects):
+                subject = values[f"subject{sub_no}"]
+                if subject.strip() == "":
+                    sg.popup("Please Enter all Fields")
+                else:
+                    subject_list.append(subject)
             break
         case sg.WINDOW_CLOSED:
             break

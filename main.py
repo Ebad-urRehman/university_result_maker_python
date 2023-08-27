@@ -63,9 +63,21 @@ while True:
             sub_no = values["no_of_sub"]
             std_no = values["no_of_std"]
             batch_no = values["batch_no"]
+            if sem_no == "" or sub_no == "" or std_no == "" or batch_no == "":
+                sg.popup("Enter all Fields")
+            else:
+                if 1 > int(sem_no) > 8:
+                    sg.popup("Enter Semester in range 1-8")
+                else:
+                    break
+                if 1 > int(sub_no) > 6:
+                    sg.popup("Enter Subjects in range 1-6")
+                else:
+                    break
+
 
             # functions.open_subject_window()
-            break
+
         case sg.WINDOW_CLOSED:
             break
 
